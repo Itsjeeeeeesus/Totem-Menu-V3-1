@@ -1,0 +1,12 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@font-face {
+	font-family: 'ADAM';
+	font-style: normal;
+	font-weight: normal;
+	src: url('./static/fonts/adam-cg-pro.woff');
+}
+::-webkit-scrollbar {
+	display: none;
+}
