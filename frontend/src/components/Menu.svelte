@@ -9,7 +9,7 @@
 	import emblaCarouselSvelte from 'embla-carousel-svelte';
 	import { writable } from 'svelte/store';
 	let prezzo_locale = locale+"_price";
-	let active_category = $state('antipasti');
+	let active_category = $state(menu_categories[0].split(' - ')[0].toLowerCase().replaceAll(' ', "-"));
 // Embla
 let emblaApi;
 let options = { loop: false, draggable: true};
@@ -72,6 +72,7 @@ function onInit(event){
 				</header>
 				{/if}
 				{#each $products as product}
+				<!-- {product} -->
 					{#if product.menu_type.includes(menu_type) && product.menu_section.includes(category)}
 						<Prodotto nome={product.name} prezzo={product[`${locale}_price`]} allergeni={product.allergens} foto="" />
 					{/if}

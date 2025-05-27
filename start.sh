@@ -6,7 +6,7 @@ while ! nc -z localhost 5000; do
 	sleep 1
 done
 
-cd ~/Desktop/Totem-Menu-V3/frontend
+cd ~/Desktop/Totem-Menu-V3-1/frontend
 npm run dev &
 while ! nc -z localhost 5173; do
 	sleep 1
