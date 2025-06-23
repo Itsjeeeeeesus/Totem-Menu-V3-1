@@ -1,9 +1,6 @@
 <script>
 	let { nome, prezzo, allergeni, foto } = $props();
 	import Button from './Button.svelte';
-	if (foto){
-		foto = foto.toLowerCase().replaceAll(' ', '-');
-	}
 </script>
 
 <div class="product mt-4">
