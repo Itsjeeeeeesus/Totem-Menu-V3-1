@@ -3,6 +3,7 @@ from flask_cors import CORS
 import json
 import requests
 import urllib
+import os
 
 app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": "*"}})
@@ -19,15 +20,17 @@ def connection():
 
 def get_products():
     if connection():
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        static_path = os.path.join(base_dir, 'static', 'prodotti-download.json')
         response = requests.get('https://www.tredicizerouno.com/api/prodotti', headers={'Accept': 'application/json'})
         lista_prodotti = response.json()
         # prodotti = Product.query.filter(Product.menu_type.contains('libro_ingredienti')).all()
-        with open('static/prodotti-download.json', 'w') as file:
+        with open(static_path, 'w') as file:
             json.dump(lista_prodotti, file)
     else:
         print('no internet connection')
 
-    with open('static/prodotti-download.json', 'r') as file:
+    with open(static_path, 'r') as file:
         return json.load(file)
 
 @app.route('/api', methods=['GET'])
