@@ -74,7 +74,7 @@ function onInit(event){
 				{#each $products as product}
 				<!-- {product} -->
 					{#if product.menu_type.includes(menu_type) && product.menu_section.includes(category)}
-						<Prodotto nome={product.name} prezzo={product[`${locale}_price`]} allergeni={product.allergens} foto="" />
+						<Prodotto nome={product.name} prezzo={product[`${locale}_price`]} allergeni={product.allergens} foto={product.pic} />
 					{/if}
 				{/each}
 				{:else}

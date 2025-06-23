@@ -1,12 +1,17 @@
 <script>
 	let { nome, prezzo, allergeni, foto } = $props();
 	import Button from './Button.svelte';
+	if (foto){
+		foto = foto.toLowerCase().replaceAll(' ', '-');
+	}
 </script>
 
 <div class="product mt-4">
-	<!-- <img src="../static/img/colazione.png" alt="" /> -->
+	{#if foto}
+		<img class="w-full object-cover rounded-lg" src={'/src/static/img/foto-menu/'+foto+'.jpg'} alt={nome} />
+	{/if}
 
-	<div class="flex items-center justify-between font-adam text-3xl">
+	<div class="flex items-center justify-between font-adam text-3xl mt-4">
 		<h3 class="max-w-2xl">{nome}</h3>
 		<p>{prezzo}</p>
 	</div>

@@ -8,6 +8,22 @@
 	import Button from '../components/Button.svelte';
 	import { onMount } from 'svelte';
 	import { getProducts } from '$lib/api';
+
+	let timeoutId;
+	const idleTimeout = 90000; // 1 minuto
+
+	function resetScreen() {
+		console.log("Torno alla schermata iniziale");
+		changePage('/');
+	}
+
+	function resetTimer() {
+		clearTimeout(timeoutId);
+		timeoutId = setTimeout(() => {
+		resetScreen();
+		}, idleTimeout);
+	}
+
 	onMount(() => {
 		getProducts();
 		document.addEventListener('contextmenu', function (event) {
@@ -21,6 +37,12 @@
 		document.addEventListener('dragstart', function (event) {
 			event.preventDefault();
 		});
+
+		window.addEventListener('touchstart', resetTimer);
+		window.addEventListener('click', resetTimer);
+		window.addEventListener('keydown', resetTimer);
+		window.addEventListener('mousemove', resetTimer);
+
 	});
 	let isMuted = !firstTimeTransition;
 </script>
