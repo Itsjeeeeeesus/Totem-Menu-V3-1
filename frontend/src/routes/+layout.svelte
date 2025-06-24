@@ -10,11 +10,13 @@
 	import { getProducts } from '$lib/api';
 
 	let timeoutId;
-	const idleTimeout = 90000; // 1 minuto
+	const idleTimeout = 10000; // 1,5 minuto
 
 	function resetScreen() {
 		console.log("Torno alla schermata iniziale");
 		changePage('/');
+		firstTimeTransition.set(true);
+		getProducts();
 	}
 
 	function resetTimer() {

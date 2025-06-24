@@ -3,12 +3,24 @@
 	import Button from './Button.svelte';
 </script>
 
-<div class="product mt-4">
+<div class="product mt-8">
 	{#if foto}
-		<img class="w-full object-cover rounded-lg" src={'/src/static/img/foto-menu/'+foto+'.jpg'} alt={nome} />
+	<div class="flex w-full justify-center">
+		<div class="flex h-full">
+			<div class="h-full w-5 bg-dark"></div>
+			<div class="h-full w-5 bg-white"></div>
+			<div class="h-full w-5 bg-primary"></div>
+		</div>
+		<img class="w-9/12 object-cover" src={'/src/static/img/foto-menu/'+foto+'.jpg'} alt={nome} />
+		<div class="flex h-full">
+			<div class="h-full w-5 bg-dark"></div>
+			<div class="h-full w-5 bg-white"></div>
+			<div class="h-full w-5 bg-primary"></div>
+		</div>
+	</div>
 	{/if}
 
-	<div class="flex items-center justify-between font-adam text-3xl mt-4">
+	<div class="flex items-center justify-between font-adam text-3xl mt-8">
 		<h3 class="max-w-2xl">{nome}</h3>
 		<p>{prezzo}</p>
 	</div>
@@ -19,3 +31,9 @@
 	</div>
 	
 </div>
+
+<style>
+	.h-full.w-5{
+		height: 618px!important;
+	}
+</style>
